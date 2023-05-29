@@ -19,7 +19,6 @@ public class Partido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nombre;
-	@OneToOne(mappedBy = "partido", cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private Resultado resultado;
+
+
 }

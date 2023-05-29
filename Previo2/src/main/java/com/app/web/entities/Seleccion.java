@@ -12,7 +12,6 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "seleccion", schema = "public")
-
 public class Seleccion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

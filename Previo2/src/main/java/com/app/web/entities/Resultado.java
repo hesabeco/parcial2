@@ -19,8 +19,5 @@ public class Resultado {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nombre;
-	@OneToOne
-	@MapsId
-    @JoinColumn(name = "partido_id")
-	private Partido partido;
+
 }

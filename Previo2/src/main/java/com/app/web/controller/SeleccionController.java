@@ -19,8 +19,11 @@ import com.app.web.repository.SeleccionRepository;
 public class SeleccionController {
 	@Autowired
 	private SeleccionRepository seleccionRepository;
+	
 	@Autowired
     private ContinenteRepository continenteRepository;
+	
+	
 	 @GetMapping({"/seleciones","/selecciones/listar"})
 		public String listar(Model model) {
 			List<Seleccion> seleccion = seleccionRepository.findAll();
