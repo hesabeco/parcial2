@@ -14,7 +14,6 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "continente", schema = "public")
-
 public class Continente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -19,6 +19,7 @@ import com.app.web.repository.SeleccionRepository;
 public class SeleccionController {
 	@Autowired
 	private SeleccionRepository seleccionRepository;
+	@Autowired
     private ContinenteRepository continenteRepository;
 	 @GetMapping({"/seleciones","/selecciones/listar"})
 		public String listar(Model model) {
@@ -30,6 +31,7 @@ public class SeleccionController {
 		@GetMapping({"/selecciones/crear"})
 		public String mostrarFormulario(Model modelo) {
 			List<Continente> listaContinentes = continenteRepository.findAll();
+			System.out.println(listaContinentes);
 			Seleccion seleccion = new Seleccion();
 			modelo.addAttribute("seleccion", seleccion);
 	        modelo.addAttribute("listaContinentes", listaContinentes);

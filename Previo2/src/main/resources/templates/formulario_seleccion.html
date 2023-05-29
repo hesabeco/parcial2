@@ -14,12 +14,12 @@
 		<div class="row">
 			<div
 				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-				<h1 th:if="${paciente.id==null}" class="text-center">Registro
+				<h1 th:if="${seleccion.id==null}" class="text-center">Registro
 					de Selecciones</h1>
-				<h1 th:unless="${paciente.id==null}" class="text-center">Edición
+				<h1 th:unless="${seleccion.id==null}" class="text-center">Edición
 					de Selecciones</h1>
 				<div class="card-body">
-					<form th:action="@{/pacientes}" th:object="${paciente}"
+					<form th:action="@{/selecciones}" th:object="${seleccion}"
 						method="post">
 						<div class="form-group">
 							<label>Nombre :</label> <input type="text" name="nombre"
