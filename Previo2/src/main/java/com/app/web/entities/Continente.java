@@ -22,4 +22,5 @@ public class Continente {
 	private String nombre;
 	@OneToMany( mappedBy="continente")
 	private List<Seleccion> selecciones;
+	
 }

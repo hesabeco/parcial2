@@ -14,39 +14,32 @@
 		<div class="row">
 			<div
 				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-				<h1 th:if="${seleccion.id==null}" class="text-center">Registro
+				<h1 th:if="${paciente.id==null}" class="text-center">Registro
 					de Selecciones</h1>
 				<h1 th:unless="${paciente.id==null}" class="text-center">Edición
 					de Selecciones</h1>
 				<div class="card-body">
-					<form th:action="@{/selecciones}" th:object="${seleccion}"
+					<form th:action="@{/pacientes}" th:object="${paciente}"
 						method="post">
-						<input type="hidden" th:field="*{id}" th:value="${seleccion.id}">
 						<div class="form-group">
 							<label>Nombre :</label> <input type="text" name="nombre"
 								th:field="*{nombre}" class="form-control"
-								placeholder="Escriba el nombre">
+								placeholder="Escriba su nombre">
 						</div>
-							<label>Continente :</label>
+						<div class="form-group">
+							<label>Grupo :</label> <input type="text" name="grupo"
+								th:field="*{grupo}" class="form-control"
+								placeholder="Escriba su grupo">
+						</div>
+						<div class="form-group">
+							<label>Continente :</label> 
 							<div>
-								<select th:field="*{continente}" class="form-control" required>
-									<th:block th:each="continente ${continente}">
-										<option th:text="${continente}" th:value="${continente}"></option>
-									</th:block>
-								</select>
+							<select th:field="*{continente}" class="form-control" required>
+							<th:block th:each="continente: ${listaContinentes}">
+							<option th:text="${continente.nombre}" th:value="${continente.id}"></option>
+							</th:block>
+							</select>
 							</div>
-						</div>
-						<div class="form-group">
-							<label>Dirección:</label> <input type="text" name="dirección"
-								th:field="*{direccion}" class="form-control">
-						</div>
-						<div class="form-group">
-							<label>Peso:</label> <input type="text" name="peso"
-								th:field="*{peso}" class="form-control">
-						</div>
-						<div class="form-group">
-							<label>Estatura:</label> <input type="text" name="estatura"
-								th:field="*{estatura}" class="form-control">
 						</div>
 						<div class="box-footer">
 							<button class="btn btn-success">Guardar</button>

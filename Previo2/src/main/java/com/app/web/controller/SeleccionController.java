@@ -3,29 +3,36 @@ package com.app.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.app.web.entities.Continente;
 import com.app.web.entities.Seleccion;
+import com.app.web.repository.ContinenteRepository;
 import com.app.web.repository.SeleccionRepository;
 
 
-
+@Controller
 public class SeleccionController {
 	@Autowired
 	private SeleccionRepository seleccionRepository;
-	 @GetMapping({"/","/seleciones","/selecciones/listar"})
+    private ContinenteRepository continenteRepository;
+	 @GetMapping({"/seleciones","/selecciones/listar"})
 		public String listar(Model model) {
 			List<Seleccion> seleccion = seleccionRepository.findAll();
 			model.addAttribute("seleccion", seleccion);
 			return "index";
 		}
 		
-		@GetMapping("/selecciones/registrar")
+		@GetMapping({"/selecciones/crear"})
 		public String mostrarFormulario(Model modelo) {
+			List<Continente> listaContinentes = continenteRepository.findAll();
 			Seleccion seleccion = new Seleccion();
 			modelo.addAttribute("seleccion", seleccion);
+	        modelo.addAttribute("listaContinentes", listaContinentes);
 			return "formulario_seleccion";
 		}
 
@@ -49,7 +56,7 @@ public class SeleccionController {
 			return "formulario_seleccion";
 		}
 
-		@GetMapping("/pacientes/{id}")
+		@GetMapping("/selecciones/{id}")
 		public String eliminarSeleccion(@PathVariable Integer id, Model modelo) {
 			seleccionRepository.deleteById(id);
 			return "redirect:/selecciones";
