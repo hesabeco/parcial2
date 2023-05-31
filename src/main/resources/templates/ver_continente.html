@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ver Continente</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Ver Continente</h1>
+				<div class="card-body">
+					<form th:action="@{/verContinente}" th:object="${continente}"
+						method="get">
+						<div class="form-group">
+							<label>Id :</label> <span data-descripcion th:text="*{id}"
+								class="form-control"></span>
+						</div>
+						<div class="form-group">
+							<label>Nombre :</label> <span data-descripcion
+								th:text="*{nombre}" class="form-control"></span>
+						</div>
+						<div class="box-footer">
+							<button class="btn btn-success">Volver a la lista</button>
+						</div>
+						<h1 class="text-center">Selecciones</h1>
+							<table class="table table-bordered">
+
+								<thead class="table-success">
+									<tr>
+										<td>Id</td>
+										<td>Selecciones</td>
+										<td>Acciones</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="seleccion: ${selecciones}">
+										<td th:text="${seleccion.id}"></td>
+										<td th:text="${seleccion.nombre}"></td>
+										<td><a
+											th:href="@{/selecciones/ver/{id}(id=${seleccion.id})}"
+											class="btn btn-info">Ver</a> <a
+											th:href="@{/selecciones/editar/{id}(id=${seleccion.id})}"
+											class="btn btn-info">Editar</a> <a
+											th:href="@{/selecciones/{id}(id=${seleccion.id})}"
+											class="btn btn-info">Eliminar</a></td>
+									</tr>
+								</tbody>
+							</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

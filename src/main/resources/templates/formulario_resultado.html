@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Registrar Resultado</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Registro de Resultado</h1>
+				<div class="card-body">
+					<form th:action="@{/resultados}" th:object="${resultado}"
+						method="post">
+						<div class="form-group">
+							<label>Seleccion :</label> 
+							<div>
+							<select th:field="*{seleccion}" class="form-control" required>
+							<th:block th:each="seleccion: ${listaSelecciones}">
+							<option th:text="${seleccion.nombre}" th:value="${seleccion.id}"></option>
+							</th:block>
+							</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Partido :</label> 
+							<div>
+							<select th:field="*{partido}" class="form-control" required>
+							<th:block th:each="partido: ${listaPartidos}">
+							<option th:text="${partido.fecha}" th:value="${partido.id}"></option>
+							</th:block>
+							</select>
+							</div>
+						</div>
+							<div class="form-group">
+							<label>Goles:</label> <input type="text" name="goles"
+								th:field="*{goles}" class="form-control"
+								placeholder="Escriba la cantidad de goles">
+						</div>
+						<div class="form-group">
+							<label>Tarjeta Roja :</label> <input type="text" name="rojas"
+								th:field="*{rojas}" class="form-control"
+								placeholder="Escriba la cantidad de tarjetas rojas">
+						</div>
+							<div class="form-group">
+							<label>Tarjeta Amarilla :</label> <input type="text" name="amarillas"
+								th:field="*{amarillas}" class="form-control"
+								placeholder="Escriba la cantidad de tarjetas amarillas">
+						</div>
+						<div class="box-footer">
+							<button class="btn btn-success">Guardar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
